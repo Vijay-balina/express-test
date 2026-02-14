@@ -62,6 +62,17 @@ app.post("/employee", async(req, res) => {
 
 })
 
+app.delete("/employees", async(req, res) => {
+    try{
+        const user = await employee.find()
+        res.status(200).json(user)
+    }catch{
+        res.status(500).json({
+            message: "server error"
+        })
+    }
+})
+
 app.get("/employees", async(req, res) => {
     try{
         const user = await employee.find()
